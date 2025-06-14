@@ -1,4 +1,5 @@
-﻿using NetArchHackaton.Shared.Domain.Users;
+﻿using Microsoft.EntityFrameworkCore;
+using NetArchHackaton.Shared.Domain.Users;
 using NetArchHackaton.Shared.Infrastructure.Base.DbContexts;
 using NetArchHackaton.Shared.Infrastructure.Base.Repositories;
 
