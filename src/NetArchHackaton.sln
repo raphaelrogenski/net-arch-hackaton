@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.Shared.Application", "NetArchHackaton.Shared.Application\NetArchHackaton.Shared.Application.csproj", "{048E4CC8-9AAD-4E80-8028-28E98BE95768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.Shared.Domain", "NetArchHackaton.Shared.Domain\NetArchHackaton.Shared.Domain.csproj", "{F6242A01-AB47-460B-8A57-E29A4F6A7ABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.Shared.Infrastructure", "NetArchHackaton.Shared.Infrastructure\NetArchHackaton.Shared.Infrastructure.csproj", "{69DF27C4-691F-42D7-9BE9-569C50FE5156}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{74ED1B22-836B-4FE9-B4EA-3985F6459409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.Shared.Contracts", "NetArchHackaton.Shared.Contracts\NetArchHackaton.Shared.Contracts.csproj", "{EABF9A91-6312-4F18-8AA6-63B78E5B87B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{048E4CC8-9AAD-4E80-8028-28E98BE95768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048E4CC8-9AAD-4E80-8028-28E98BE95768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048E4CC8-9AAD-4E80-8028-28E98BE95768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048E4CC8-9AAD-4E80-8028-28E98BE95768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6242A01-AB47-460B-8A57-E29A4F6A7ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6242A01-AB47-460B-8A57-E29A4F6A7ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6242A01-AB47-460B-8A57-E29A4F6A7ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6242A01-AB47-460B-8A57-E29A4F6A7ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DF27C4-691F-42D7-9BE9-569C50FE5156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DF27C4-691F-42D7-9BE9-569C50FE5156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DF27C4-691F-42D7-9BE9-569C50FE5156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DF27C4-691F-42D7-9BE9-569C50FE5156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{048E4CC8-9AAD-4E80-8028-28E98BE95768} = {74ED1B22-836B-4FE9-B4EA-3985F6459409}
+		{F6242A01-AB47-460B-8A57-E29A4F6A7ABA} = {74ED1B22-836B-4FE9-B4EA-3985F6459409}
+		{69DF27C4-691F-42D7-9BE9-569C50FE5156} = {74ED1B22-836B-4FE9-B4EA-3985F6459409}
+		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3} = {74ED1B22-836B-4FE9-B4EA-3985F6459409}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A16E8994-8F0C-4C48-8E8A-977F1A09A88F}
+	EndGlobalSection
+EndGlobal
