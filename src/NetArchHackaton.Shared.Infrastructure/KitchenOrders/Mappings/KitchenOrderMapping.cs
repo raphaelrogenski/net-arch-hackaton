@@ -8,7 +8,7 @@ namespace NetArchHackaton.Shared.Infrastructure.KitchenOrders
     {
         public void Configure(EntityTypeBuilder<KitchenOrder> builder)
         {
-            builder.ToTable("KitchenOrders", "order");
+            builder.ToTable("KitchenOrders", "dbo");
             builder.HasKey(r => r.Id);
 
             builder.Property(r => r.Created)

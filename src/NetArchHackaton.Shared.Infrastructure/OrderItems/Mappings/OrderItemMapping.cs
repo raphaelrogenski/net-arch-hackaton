@@ -8,7 +8,7 @@ namespace NetArchHackaton.Shared.Infrastructure.OrderItems
     {
         public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
-            builder.ToTable("OrderItems", "order");
+            builder.ToTable("OrderItems", "dbo");
             builder.HasKey(r => r.Id);
 
             builder.Property(r => r.Created)

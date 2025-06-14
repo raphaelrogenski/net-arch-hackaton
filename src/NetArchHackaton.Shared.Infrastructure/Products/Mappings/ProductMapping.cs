@@ -8,7 +8,7 @@ namespace NetArchHackaton.Shared.Infrastructure.Products
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products", "menu");
+            builder.ToTable("Products", "dbo");
             builder.HasKey(r => r.Id);
 
             builder.Property(r => r.Created)
