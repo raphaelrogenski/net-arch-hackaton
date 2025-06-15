@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NetArchHackaton.Shared.Contracts.Auth.Commands;
 using NetArchHackaton.Shared.Contracts.Auth.Queries;
 
@@ -36,6 +37,7 @@ namespace NetArchHackaton.AuthAPI.Controllers
         }
 
         [HttpPost("Register")]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> RegisterCustomer(Shared.Contracts.Auth.DTOs.RegisterRequest request)
         {
             try
