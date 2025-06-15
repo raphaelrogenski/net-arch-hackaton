@@ -22,6 +22,7 @@
             UseSwagger(app);
             UseAuth(app);
             UseEndpoint(app);
+            UsePrometheus(app);
 
             app.Run();
         }
