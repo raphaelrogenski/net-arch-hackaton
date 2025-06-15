@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Models;
 using NetArchHackaton.Shared.Infrastructure.Base.DbContexts;
 
 namespace NetArchHackaton.AuthAPI
@@ -14,6 +11,8 @@ namespace NetArchHackaton.AuthAPI
             {
                 using var context = AppDbContextFactory.CreateDbContext(app.Configuration);
                 context.Database.Migrate();
+
+                DatabaseSeeder.SeedAsync(app.Services).Wait();
             }
 		}
     }
