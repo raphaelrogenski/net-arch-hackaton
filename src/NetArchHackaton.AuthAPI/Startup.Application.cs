@@ -1,4 +1,7 @@
-﻿using NetArchHackaton.Shared.Application.Auth.Queries;
+﻿using NetArchHackaton.Shared.Application.Auth.Commands;
+using NetArchHackaton.Shared.Application.Auth.Helpers;
+using NetArchHackaton.Shared.Application.Auth.Queries;
+using NetArchHackaton.Shared.Contracts.Auth.Commands;
 using NetArchHackaton.Shared.Contracts.Auth.Queries;
 
 namespace NetArchHackaton.AuthAPI
@@ -7,7 +10,9 @@ namespace NetArchHackaton.AuthAPI
     {
         private void ConfigureApplication(WebApplicationBuilder builder)
         {
+            builder.Services.AddScoped<JwtTokenHelper>();
             builder.Services.AddScoped<ILoginHandler, LoginHandler>();
+            builder.Services.AddScoped<IRegisterHandler, RegisterHandler>();
         }
     }
 }
