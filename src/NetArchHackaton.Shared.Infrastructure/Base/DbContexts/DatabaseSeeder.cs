@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using NetArchHackaton.Shared.Domain.Products;
 using NetArchHackaton.Shared.Domain.Users;
 
 namespace NetArchHackaton.Shared.Infrastructure.Base.DbContexts
@@ -23,13 +22,20 @@ namespace NetArchHackaton.Shared.Infrastructure.Base.DbContexts
                 return;
             }
 
-            usersSet.Add(CreateUser("Customer", "", "11111111111", "S3nhaF0rte!", "Customer"));
-            usersSet.Add(CreateUser("Manager", "manager@fasttech.com", "", "S3nhaF0rte!", "Manager"));
+            var user1 = CreateCustomer("Customer A", "customer@a.com", "13961574928", "S3nhaF0rte!");
+            var user2 = CreateCustomer("Customer B", "customer@b.com", "25835810903", "S3nhaF0rte!");
+            var user3 = CreateEmployee("Manager", "manager@fasttech.com", "S3nhaF0rte!", UserRoleEnum.Manager);
+            var user4 = CreateEmployee("Kitchen", "kitchen@fasttech.com", "S3nhaF0rte!", UserRoleEnum.Kitchen);
+
+            usersSet.Add(user1);
+            usersSet.Add(user2);
+            usersSet.Add(user3);
+            usersSet.Add(user4);
 
             dbContext.SaveChanges();
         }
 
-        private static User CreateUser(string fullName, string email, string cpf, string password, string role)
+        private static User CreateCustomer(string fullName, string email, string cpf, string password)
         {
             var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<User>();
 
@@ -40,6 +46,24 @@ namespace NetArchHackaton.Shared.Infrastructure.Base.DbContexts
                 FullName = fullName,
                 Email = email,
                 CPF = cpf,
+                Role = UserRoleEnum.Customer,
+            };
+
+            user.PasswordHash = hasher.HashPassword(user, password);
+
+            return user;
+        }
+
+        private static User CreateEmployee(string fullName, string email, string password, UserRoleEnum role)
+        {
+            var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<User>();
+
+            var user = new User()
+            {
+                Id = Guid.NewGuid(),
+                Created = DateTimeOffset.Now,
+                FullName = fullName,
+                Email = email,
                 Role = role,
             };
 

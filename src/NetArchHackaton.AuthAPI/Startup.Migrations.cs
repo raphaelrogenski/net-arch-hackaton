@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
 using NetArchHackaton.Shared.Infrastructure.Base.DbContexts;
 
 namespace NetArchHackaton.AuthAPI

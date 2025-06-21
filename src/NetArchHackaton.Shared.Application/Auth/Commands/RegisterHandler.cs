@@ -26,7 +26,7 @@ namespace NetArchHackaton.Shared.Application.Auth.Commands
                 FullName = request.FullName,
                 Email = request.Email,
                 PasswordHash = request.Password,
-                Role = request.Role,
+                //Role = request.Role,
             };
 
             userRepository.Create(user);

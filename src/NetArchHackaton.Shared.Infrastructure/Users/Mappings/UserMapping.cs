@@ -8,7 +8,7 @@ namespace NetArchHackaton.Shared.Infrastructure.Users
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users", "dbo");
+            builder.ToTable("Users", "auth");
             builder.HasKey(r => r.Id);
 
             builder.Property(r => r.Created)
@@ -37,8 +37,7 @@ namespace NetArchHackaton.Shared.Infrastructure.Users
 
             builder.Property(r => r.Role)
                 .IsRequired()
-                .HasColumnType("varchar(255)")
-                .HasMaxLength(255);
+                .HasColumnType("smallint");
         }
     }
 }
