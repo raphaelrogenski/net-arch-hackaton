@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using NetArchHackaton.Shared.Application.Auth.Exceptions;
 using NetArchHackaton.Shared.Application.Auth.Helpers;
 using NetArchHackaton.Shared.Contracts.Auth.DTOs;
 using NetArchHackaton.Shared.Contracts.Auth.Queries;
 using NetArchHackaton.Shared.Domain.Users;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace NetArchHackaton.Shared.Application.Auth.Queries
 {
@@ -24,7 +31,7 @@ namespace NetArchHackaton.Shared.Application.Auth.Queries
 
             if (user == null)
             {
-                throw new ApplicationException();
+                throw new InvalidUserOrPasswordException();
             }
 
             var hasher = new PasswordHasher<User>();
@@ -32,7 +39,7 @@ namespace NetArchHackaton.Shared.Application.Auth.Queries
 
             if (passwordVerificationResult == PasswordVerificationResult.Failed)
             {
-                throw new ApplicationException();
+                throw new InvalidUserOrPasswordException();
             }
 
             var token = jwtTokenHelper.GenerateToken(user);

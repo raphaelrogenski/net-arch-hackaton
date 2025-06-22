@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using NetArchHackaton.Shared.Application.Auth.Exceptions;
 using NetArchHackaton.Shared.Application.Auth.Validators;
 using NetArchHackaton.Shared.Contracts.Auth.Commands;
 using NetArchHackaton.Shared.Contracts.Auth.DTOs;
@@ -20,25 +21,25 @@ namespace NetArchHackaton.Shared.Application.Auth.Commands
             var exists = userRepository.Query(false).Any(r => r.Email == request.Email || r.CPF == request.CPF);
             if (exists)
             {
-                throw new Base.Exceptions.ApplicationException("");
+                throw new EmailOrCPFAlreadyExistsException();
             }
 
             var isValidEmail = EmailValidator.IsValid(request.Email);
             if (!isValidEmail)
             {
-                throw new Base.Exceptions.ApplicationException("");
+                throw new InvalidEmailException();
             }
 
             var isValidCPF = CPFValidator.IsValid(request.CPF);
             if (!isValidCPF)
             {
-                throw new Base.Exceptions.ApplicationException("");
+                throw new InvalidCPFException();
             }
 
             var isValidPassword = PasswordSecurityValidator.IsValid(request.Password);
             if (!isValidPassword)
             {
-                throw new Base.Exceptions.ApplicationException("");
+                throw new InvalidPasswordException();
             }
 
             var hasher = new PasswordHasher<User>();
