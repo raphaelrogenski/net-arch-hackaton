@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using NetArchHackaton.Shared.Contracts.Auth.Commands;
 using NetArchHackaton.Shared.Contracts.Auth.DTOs;
 using NetArchHackaton.Shared.Contracts.Auth.Queries;
+using NetArchHackaton.Shared.Domain.Users;
+using System.Threading.Tasks;
 
 namespace NetArchHackaton.AuthAPI.Controllers
 {

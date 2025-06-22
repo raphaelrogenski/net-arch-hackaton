@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using NetArchHackaton.Shared.Application.Auth.Validators;
 using NetArchHackaton.Shared.Contracts.Auth.Commands;
 using NetArchHackaton.Shared.Contracts.Auth.DTOs;
 using NetArchHackaton.Shared.Domain.Users;
@@ -18,6 +19,18 @@ namespace NetArchHackaton.Shared.Application.Auth.Commands
         {
             var exists = userRepository.Query(false).Any(r => r.Email == request.Email);
             if (exists)
+            {
+                throw new Base.Exceptions.ApplicationException("");
+            }
+
+            var isValidEmail = EmailValidator.IsValid(request.Email);
+            if (!isValidEmail)
+            {
+                throw new Base.Exceptions.ApplicationException("");
+            }
+
+            var isValidPassword = PasswordSecurityValidator.IsValid(request.Password);
+            if (!isValidPassword)
             {
                 throw new Base.Exceptions.ApplicationException("");
             }
