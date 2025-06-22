@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetArchHackaton.Shared.Contracts.Auth.Commands;
+using NetArchHackaton.Shared.Contracts.Auth.DTOs;
 using NetArchHackaton.Shared.Contracts.Auth.Queries;
 
 namespace NetArchHackaton.AuthAPI.Controllers
@@ -10,12 +11,14 @@ namespace NetArchHackaton.AuthAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly ILoginHandler loginHandler;
-        private readonly IRegisterHandler registerHandler;
+        private readonly IRegisterCustomerHandler registerCustomerHandler;
+        private readonly IRegisterEmployeeHandler registerEmployeeHandler;
 
-        public AuthController(ILoginHandler loginHandler, IRegisterHandler registerHandler)
+        public AuthController(ILoginHandler loginHandler, IRegisterCustomerHandler registerCustomerHandler, IRegisterEmployeeHandler registerEmployeeHandler)
         {
             this.loginHandler = loginHandler;
-            this.registerHandler = registerHandler;
+            this.registerCustomerHandler = registerCustomerHandler;
+            this.registerEmployeeHandler = registerEmployeeHandler;
         }
 
         [HttpPost("Login")]
@@ -36,13 +39,31 @@ namespace NetArchHackaton.AuthAPI.Controllers
             }
         }
 
-        [HttpPost("Register")]
-        [Authorize(Roles = "Manager")]
-        public async Task<IActionResult> RegisterCustomer(Shared.Contracts.Auth.DTOs.RegisterRequest request)
+        [HttpPost("RegisterCustomer")]
+        public async Task<IActionResult> RegisterCustomer(RegisterCustomerRequest request)
         {
             try
             {
-                await registerHandler.HandleAsync(request);
+                await registerCustomerHandler.HandleAsync(request);
+                return Created();
+            }
+            catch (Shared.Application.Base.Exceptions.ApplicationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpPost("RegisterEmployee")]
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> RegisterEmployee(RegisterEmployeeRequest request)
+        {
+            try
+            {
+                await registerEmployeeHandler.HandleAsync(request);
                 return Created();
             }
             catch (Shared.Application.Base.Exceptions.ApplicationException ex)

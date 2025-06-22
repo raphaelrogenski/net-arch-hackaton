@@ -12,7 +12,8 @@ namespace NetArchHackaton.AuthAPI
         {
             builder.Services.AddScoped<JwtTokenHelper>();
             builder.Services.AddScoped<ILoginHandler, LoginHandler>();
-            builder.Services.AddScoped<IRegisterHandler, RegisterHandler>();
+            builder.Services.AddScoped<IRegisterCustomerHandler, RegisterCustomerHandler>();
+            builder.Services.AddScoped<IRegisterEmployeeHandler, RegisterEmployeeHandler>();
         }
     }
 }
