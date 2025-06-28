@@ -1,0 +1,6 @@
+@NetArchHackaton.MenuAPI_HostAddress = http://localhost:5183
+
+GET {{NetArchHackaton.MenuAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
