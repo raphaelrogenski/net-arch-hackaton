@@ -9,6 +9,11 @@ namespace NetArchHackaton.MenuAPI
     {
         private void ConfigureApplication(WebApplicationBuilder builder)
         {
+            builder.Services.AddScoped<IGetMenuHandler, GetMenuHandler>();
+            builder.Services.AddScoped<IGetMenuItemHandler, GetMenuItemHandler>();
+            builder.Services.AddScoped<ICreateMenuItemHandler, CreateMenuItemHandler>();
+            builder.Services.AddScoped<IUpdateMenuItemHandler, UpdateMenuItemHandler>();
+            builder.Services.AddScoped<IDeleteMenuItemHandler, DeleteMenuItemHandler>();
         }
     }
 }
