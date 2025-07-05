@@ -2,5 +2,6 @@
 {
     public interface IOrderRepository : IRepositoryBase<Order>
     {
+        Order GetOrderDetails(string userEmail, Guid id);
     }
 }
