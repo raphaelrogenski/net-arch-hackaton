@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.Shared.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.OrderService", "NetArchHackaton.OrderService\NetArchHackaton.OrderService.csproj", "{FE815735-4C43-4A1F-A786-F6D54F257623}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetArchHackaton.DQLMonitor", "NetArchHackaton.DQLMonitor\NetArchHackaton.DQLMonitor.csproj", "{320CEBFB-7312-4230-A58E-5F9857560CDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{FE815735-4C43-4A1F-A786-F6D54F257623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE815735-4C43-4A1F-A786-F6D54F257623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE815735-4C43-4A1F-A786-F6D54F257623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320CEBFB-7312-4230-A58E-5F9857560CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320CEBFB-7312-4230-A58E-5F9857560CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320CEBFB-7312-4230-A58E-5F9857560CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320CEBFB-7312-4230-A58E-5F9857560CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{C98A4F66-57F2-40FC-8974-E4D6779F0B01} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{EABF9A91-6312-4F18-8AA6-63B78E5B87B3} = {74ED1B22-836B-4FE9-B4EA-3985F6459409}
 		{FE815735-4C43-4A1F-A786-F6D54F257623} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{320CEBFB-7312-4230-A58E-5F9857560CDC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A16E8994-8F0C-4C48-8E8A-977F1A09A88F}
