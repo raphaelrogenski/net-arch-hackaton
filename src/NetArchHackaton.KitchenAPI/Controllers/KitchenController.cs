@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetArchHackaton.Shared.Application.Kitchen.Exceptions;
 using NetArchHackaton.Shared.Application.Orders.Exceptions;
+using NetArchHackaton.Shared.Contracts.Kitchen.Commands;
 using NetArchHackaton.Shared.Contracts.Kitchen.DTOs;
+using NetArchHackaton.Shared.Contracts.Kitchen.Queries;
 using System.Security.Claims;
 
 namespace NetArchHackaton.MenuAPI.Controllers
@@ -10,8 +13,17 @@ namespace NetArchHackaton.MenuAPI.Controllers
     [Route("[controller]/Orders")]
     public class KitchenController : ControllerBase
     {
-        public KitchenController()
+        private readonly IGetKitchenOrdersHandler getHandler;
+        private readonly IAcceptKitchenOrderHandler acceptHandler;
+        private readonly IRejectKitchenOrderHandler rejectHandler;
+        private readonly IFinishKitchenOrderHandler finishHandler;
+
+        public KitchenController(IGetKitchenOrdersHandler getHandler, IAcceptKitchenOrderHandler acceptHandler, IRejectKitchenOrderHandler rejectHandler, IFinishKitchenOrderHandler finishHandler)
         {
+            this.getHandler = getHandler;
+            this.acceptHandler = acceptHandler;
+            this.rejectHandler = rejectHandler;
+            this.finishHandler = finishHandler;
         }
 
         [HttpGet]
@@ -20,7 +32,9 @@ namespace NetArchHackaton.MenuAPI.Controllers
         {
             try
             {
-                throw new NotImplementedException();
+                var result = await getHandler.HandleAsync();
+
+                return Ok(result);
             }
             catch (Shared.Application.Base.Exceptions.ApplicationException ex)
             {
@@ -39,7 +53,9 @@ namespace NetArchHackaton.MenuAPI.Controllers
             try
             {
                 var userEmail = GetUserEmail();
-                throw new NotImplementedException();
+                var result = await acceptHandler.HandleAsync(userEmail, id);
+
+                return Ok(result);
             }
             catch (OrderNotFoundException)
             {
@@ -62,7 +78,9 @@ namespace NetArchHackaton.MenuAPI.Controllers
             try
             {
                 var userEmail = GetUserEmail();
-                throw new NotImplementedException();
+                var result = await rejectHandler.HandleAsync(userEmail, id, cancelKitchenOrderRequest);
+
+                return Ok(result);
             }
             catch (OrderNotFoundException)
             {
@@ -85,7 +103,9 @@ namespace NetArchHackaton.MenuAPI.Controllers
             try
             {
                 var userEmail = GetUserEmail();
-                throw new NotImplementedException();
+                var result = await finishHandler.HandleAsync(userEmail, id);
+
+                return Ok(result);
             }
             catch (OrderNotFoundException)
             {
