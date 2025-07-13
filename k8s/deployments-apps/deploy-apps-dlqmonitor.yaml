@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-dlqmonitor
+  namespace: hackaton
+  labels:
+    app: dlqmonitor
+    component: app
+  annotations:
+    description: "Function to process DQL"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dlqmonitor
+  template:
+    metadata:
+      labels:
+        app: dlqmonitor
+        component: app
+    spec:
+      containers:
+        - name: dlqmonitor
+          image: local_dlqmonitor:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: config-rabbitmq
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ASPNETCORE_URLS
+              value: "http://+:80"
+            - name: AzureWebJobsStorage
+              value: "UseDevelopmentStorage=true"

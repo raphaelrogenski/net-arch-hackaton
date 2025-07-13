@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dlqmonitor
+  namespace: hackaton
+  labels:
+    app: dlqmonitor
+    component: app
+  annotations:
+    description: "Function to process DQL"
+spec:
+  selector:
+    app: dlqmonitor
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

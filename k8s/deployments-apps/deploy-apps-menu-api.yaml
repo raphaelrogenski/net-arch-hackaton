@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-menuapi
+  namespace: hackaton
+  labels:
+    app: menuapi
+    component: app
+  annotations:
+    description: "API to receive write operations"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: menuapi
+  template:
+    metadata:
+      labels:
+        app: menuapi
+        component: app
+    spec:
+      containers:
+        - name: menuapi
+          image: local_menuapi:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: config-sqlserver
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development

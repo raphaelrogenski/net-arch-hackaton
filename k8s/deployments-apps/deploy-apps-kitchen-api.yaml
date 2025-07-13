@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-kitchenapi
+  namespace: hackaton
+  labels:
+    app: kitchenapi
+    component: app
+  annotations:
+    description: "API to receive write operations"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kitchenapi
+  template:
+    metadata:
+      labels:
+        app: kitchenapi
+        component: app
+    spec:
+      containers:
+        - name: kitchenapi
+          image: local_kitchenapi:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: config-sqlserver
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development

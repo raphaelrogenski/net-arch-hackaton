@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-authapi
+  namespace: hackaton
+  labels:
+    app: authapi
+    component: app
+  annotations:
+    description: "API to receive write operations"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authapi
+  template:
+    metadata:
+      labels:
+        app: authapi
+        component: app
+    spec:
+      containers:
+        - name: authapi
+          image: local_authapi:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: config-sqlserver
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
