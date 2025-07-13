@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-sqlserver
+  namespace: hackaton
+data:
+  CONNECTION_STRING: "Server=svc-sqlserver.hackaton.svc.cluster.local;Database=Hackaton;User Id=sa;Password=SuaSenha123!;TrustServerCertificate=True;"
