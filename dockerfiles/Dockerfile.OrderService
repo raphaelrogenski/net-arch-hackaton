@@ -1,0 +1,17 @@
+# Etapa 1: build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY *.sln .
+COPY src/NetArchHackaton.OrderService/*.csproj NetArchHackaton.OrderService/
+COPY src/NetArchHackaton.Shared.*/*.csproj ./
+RUN dotnet restore NetArchHackaton.OrderService/NetArchHackaton.OrderService.csproj
+COPY src/. .
+WORKDIR /src/NetArchHackaton.OrderService
+RUN dotnet publish -c Release -o /app/publish
+
+# Etapa 2: runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/publish .
+EXPOSE 9091
+ENTRYPOINT ["dotnet", "NetArchHackaton.OrderService.dll"]
